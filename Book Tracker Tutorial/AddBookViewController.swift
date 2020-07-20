@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -55,6 +57,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         genreTextField.placeholder = "Enter Genre Name"
         genreTextField.layer.borderWidth = 0
         genreTextField.layer.borderColor = UIColor.gray.cgColor
+        statusTextField.text = ""
         }
     
     @IBAction func saveButton(_ sender: UIButton) {
@@ -76,7 +79,41 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
             genreTextField.layer.borderWidth = 2
             genreTextField.layer.borderColor = UIColor.red.cgColor
             }
+        if(statusTextField.text == ""){
+                statusTextField.placeholder = "Genre Cannot be blank"
+                statusTextField.becomeFirstResponder()
+                statusTextField.layer.borderWidth = 2
+                statusTextField.layer.borderColor = UIColor.red.cgColor
+        }else{
+            saveBook()
         }
+    }
+    
+  //MARK:-
+  //MARK: save book to database
+    func saveBook(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let myContext = appDelegate.persistentContainer.viewContext
+        
+        let book = Book(context: myContext)
+        
+        book.bookname = bookTextField.text
+        book.authorname = authorTextField.text
+        book.status = statusTextField.text
+        book.genre = genreTextField.text
+        
+        do {
+            try myContext.save()
+        }catch{
+            print(error)
+        }
+         bookTextField.text = ""
+         authorTextField.text = ""
+         genreTextField.text = ""
+         statusTextField.text = ""
+         
+        bookTextField.becomeFirstResponder()    
+    }
     
     //MARK: -
     //MARK: All text field functions
@@ -124,6 +161,10 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
              genreTableView.reloadData()
         }
     
+    @IBAction func statusEditingChanged(_ sender: UITextField) {
+        statusTextField.layer.borderWidth = 0
+        statusTextField.layer.borderColor = UIColor.gray.cgColor
+    }
     
     func filterArray(filterText:String){
         genreArray = genreArray.filter{
