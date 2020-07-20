@@ -40,7 +40,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
                   x:statusTextField.frame.origin.x,
                   y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
                   width: statusTextField.frame.width,
-                  height: 350)    }
+                  height: 300)    }
     
     @IBAction func resetButton(_ sender: UIButton) {
         bookTextField.text = ""
@@ -105,7 +105,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
             x:genreTextField.frame.origin.x,
             y:genreTextField.frame.origin.y + genreTextField.frame.height + 1,
             width: genreTextField.frame.width,
-            height: 350)
+            height: 300)
         genreTableView.reloadData()
         genreTableView.isHidden = false
         }
@@ -118,7 +118,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
              x:statusTextField.frame.origin.x,
              y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
              width: statusTextField.frame.width,
-             height: 350)
+             height: 300)
              genreTempArray = genreArray
              genreArray = statusArray
              genreTableView.reloadData()
@@ -126,7 +126,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func filterArray(filterText:String){
-        genreSearchArray = genreArray.filter{
+        genreArray = genreArray.filter{
             genre in return genre.lowercased().contains(filterText.lowercased())
             }
         }

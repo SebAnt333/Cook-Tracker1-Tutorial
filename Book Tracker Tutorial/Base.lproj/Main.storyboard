@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="psU-se-hB8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jD5-Ni-vhN">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -116,10 +116,11 @@
             </objects>
             <point key="canvasLocation" x="373.91304347826087" y="79.6875"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add Book-->
         <scene sceneID="t0F-NR-Fh6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="psU-se-hB8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Add Book" image="pencil" catalog="system" id="SxG-4L-Qwj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lwu-Ny-SBU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -134,9 +135,63 @@
             </objects>
             <point key="canvasLocation" x="-433" y="80"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="elP-WR-hdI">
+            <objects>
+                <viewController id="MVu-Lc-UU4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ia-as-0XO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="pfS-GJ-2aJ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="u2i-n4-JKB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxr-gp-T1n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="374" y="1029"/>
+        </scene>
+        <!--Display Books-->
+        <scene sceneID="hrZ-Ex-dsc">
+            <objects>
+                <viewController id="CjU-Z0-yp0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ewx-5L-Fgf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Ph4-yJ-e9e"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Display Books" image="book" catalog="system" id="X8J-5c-fhq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22O-wh-SJD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1164" y="634"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vup-pK-T9v">
+            <objects>
+                <tabBarController id="jD5-Ni-vhN" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vQP-Ft-alC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CjU-Z0-yp0" kind="relationship" relationship="viewControllers" id="Pf7-Kw-Uxv"/>
+                        <segue destination="psU-se-hB8" kind="relationship" relationship="viewControllers" id="VdB-CY-rns"/>
+                        <segue destination="MVu-Lc-UU4" kind="relationship" relationship="viewControllers" id="O1Z-R1-XfY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wrt-ak-qTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1736" y="694"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>
