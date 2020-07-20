@@ -16,7 +16,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var genreTableView: UITableView!
     @IBOutlet weak var statusTextField: UITextField!
     
-    
+     //MARK: All class variables
     var genreArray:[String] = ["Non Fiction", "Fiction", "Thriller", "Suspense", "Biography", "Technical", "Romance"]
     var statusArray:[String] = ["Read","Currently Reading","To Read"]
     
@@ -37,9 +37,9 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
           genreTableView.frame = CGRect.init(
-                  x:genreTextField.frame.origin.x,
-                  y:genreTextField.frame.origin.y + genreTextField.frame.height + 1,
-                  width: genreTextField.frame.width,
+                  x:statusTextField.frame.origin.x,
+                  y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
+                  width: statusTextField.frame.width,
                   height: 350)    }
     
     @IBAction func resetButton(_ sender: UIButton) {
@@ -78,6 +78,9 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     
+    //MARK: -
+    //MARK: All text field functions
+    
     @IBAction func bookEditingChanged(_ sender: Any) {
         bookTextField.layer.borderWidth = 0
         bookTextField.layer.borderColor = UIColor.gray.cgColor
@@ -93,9 +96,10 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         genreTableView.reloadData()
         }
     @IBAction func genreEditingDidBegin(_ sender: Any) {
-        genreTextField.isHidden = false
-        genreSearchArray = genreArray
+        genreTableView.isHidden = false
+        genreArray = genreTempArray
         isGenre = true
+        
         statusTextField.isHidden = true
         genreTableView.frame = CGRect.init(
             x:genreTextField.frame.origin.x,
@@ -105,8 +109,10 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         genreTableView.reloadData()
         genreTableView.isHidden = false
         }
+    
     @IBAction func genreEditingDidEnd(_ sender: Any) {
-             genreTableView.isHidden = false
+        statusTextField.isHidden = false
+        genreTableView.isHidden = false
              isGenre = false
              genreTableView.frame = CGRect.init(
              x:statusTextField.frame.origin.x,
@@ -126,7 +132,8 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
   
-    
+    //MARK: -
+    //MARK: This is all about table view functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return genreArray.count
         }
