@@ -15,6 +15,7 @@
 		DF1A28DF249330BD00CB2333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1A28DE249330BD00CB2333 /* Assets.xcassets */; };
 		DF1A28E2249330BD00CB2333 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1A28E0249330BD00CB2333 /* LaunchScreen.storyboard */; };
 		DF1A28EA24933B4900CB2333 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A28E924933B4900CB2333 /* AddBookViewController.swift */; };
+		DF5C0EF024C5A93A00049797 /* DisplayBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C0EEF24C5A93A00049797 /* DisplayBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DF1A28E1249330BD00CB2333 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF1A28E3249330BD00CB2333 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF1A28E924933B4900CB2333 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		DF5C0EEF24C5A93A00049797 /* DisplayBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DF1A28D4249330BB00CB2333 /* SceneDelegate.swift */,
 				DF1A28D6249330BB00CB2333 /* ViewController.swift */,
 				DF1A28E924933B4900CB2333 /* AddBookViewController.swift */,
+				DF5C0EEF24C5A93A00049797 /* DisplayBookViewController.swift */,
 				DF1A28D8249330BB00CB2333 /* Main.storyboard */,
 				DF1A28DE249330BD00CB2333 /* Assets.xcassets */,
 				DF1A28E0249330BD00CB2333 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			files = (
 				DF1A28D7249330BB00CB2333 /* ViewController.swift in Sources */,
 				DF1A28EA24933B4900CB2333 /* AddBookViewController.swift in Sources */,
+				DF5C0EF024C5A93A00049797 /* DisplayBookViewController.swift in Sources */,
 				DF1A28D3249330BB00CB2333 /* AppDelegate.swift in Sources */,
 				DF1A28D5249330BB00CB2333 /* SceneDelegate.swift in Sources */,
 				DF1A28DD249330BB00CB2333 /* Book_Tracker_Tutorial.xcdatamodeld in Sources */,

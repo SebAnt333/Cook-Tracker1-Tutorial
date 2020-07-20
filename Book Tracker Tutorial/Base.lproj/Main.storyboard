@@ -89,11 +89,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset" image="arrowshape.turn.up.left.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="asF-uY-xO3"/>
+                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EW9-ew-aY7"/>
                                 </connections>
                             </button>
                             <connections>
-                                <action selector="resetButton:" destination="BYZ-38-t0r" id="b3w-Um-hlD"/>
+                                <action selector="resetButton:" destination="BYZ-38-t0r" id="FAh-LS-Ut2"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" style="plain" id="nMR-K9-vXR">
@@ -112,12 +112,13 @@
                         <outlet property="bookTextField" destination="4Ph-VB-cqb" id="6qh-fp-Eku"/>
                         <outlet property="genreTableView" destination="n6t-mY-pI7" id="KGk-Dy-quS"/>
                         <outlet property="genreTextField" destination="H6D-cL-Asc" id="ZPP-qA-M4X"/>
+                        <outlet property="resetBut" destination="Xxq-C6-5ak" id="KwJ-CF-vca"/>
                         <outlet property="statusTextField" destination="SsB-zY-L6j" id="ItJ-Gz-fJb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373.91304347826087" y="79.6875"/>
+            <point key="canvasLocation" x="1164" y="-93"/>
         </scene>
         <!--Add Book-->
         <scene sceneID="t0F-NR-Fh6">
@@ -136,7 +137,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdS-il-mFj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-433" y="80"/>
+            <point key="canvasLocation" x="-222" y="82"/>
         </scene>
         <!--Search-->
         <scene sceneID="elP-WR-hdI">
@@ -152,23 +153,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxr-gp-T1n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374" y="1029"/>
+            <point key="canvasLocation" x="1164" y="1495"/>
         </scene>
         <!--Display Books-->
         <scene sceneID="hrZ-Ex-dsc">
             <objects>
-                <viewController id="CjU-Z0-yp0" sceneMemberID="viewController">
+                <viewController id="CjU-Z0-yp0" customClass="DisplayBookViewController" customModule="Cook_Tracker1_Tutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ewx-5L-Fgf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WlU-Fe-cUf">
+                                <rect key="frame" x="20" y="154" width="374" height="632"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookcell" id="DhM-Y5-uDI">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DhM-Y5-uDI" id="buw-QU-dCc">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ph4-yJ-e9e" firstAttribute="bottom" secondItem="WlU-Fe-cUf" secondAttribute="bottom" constant="27" id="5RI-aW-a0T"/>
+                            <constraint firstItem="WlU-Fe-cUf" firstAttribute="leading" secondItem="Ewx-5L-Fgf" secondAttribute="leadingMargin" id="9YP-kD-1lE"/>
+                            <constraint firstItem="WlU-Fe-cUf" firstAttribute="trailing" secondItem="Ewx-5L-Fgf" secondAttribute="trailingMargin" id="gIT-yc-yZp"/>
+                            <constraint firstItem="WlU-Fe-cUf" firstAttribute="top" secondItem="Ph4-yJ-e9e" secondAttribute="top" constant="110" id="zFP-aO-06y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ph4-yJ-e9e"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Display Books" image="book" catalog="system" id="X8J-5c-fhq"/>
+                    <connections>
+                        <outlet property="bookTableView" destination="WlU-Fe-cUf" id="nZg-Bu-J7J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22O-wh-SJD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="634"/>
+            <point key="canvasLocation" x="1163.768115942029" y="632.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vup-pK-T9v">

@@ -17,6 +17,8 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var genreTableView: UITableView!
     @IBOutlet weak var statusTextField: UITextField!
+    @IBOutlet weak var resetBut: UIBarButtonItem!
+    
     
      //MARK: All class variables
     var genreArray:[String] = ["Non Fiction", "Fiction", "Thriller", "Suspense", "Biography", "Technical", "Romance"]
@@ -44,7 +46,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
                   width: statusTextField.frame.width,
                   height: 300)    }
     
-    @IBAction func resetButton(_ sender: UIButton) {
+    @IBAction func resetButton(_ sender: UIBarButtonItem) {
         bookTextField.text = ""
         bookTextField.placeholder = "Enter Book Name"
         bookTextField.layer.borderWidth = 0
@@ -58,7 +60,11 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         genreTextField.layer.borderWidth = 0
         genreTextField.layer.borderColor = UIColor.gray.cgColor
         statusTextField.text = ""
-        }
+        
+        bookTextField.becomeFirstResponder()
+    }
+    
+    
     
     @IBAction func saveButton(_ sender: UIButton) {
         if(bookTextField.text == ""){
@@ -107,12 +113,8 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         }catch{
             print(error)
         }
-         bookTextField.text = ""
-         authorTextField.text = ""
-         genreTextField.text = ""
-         statusTextField.text = ""
          
-        bookTextField.becomeFirstResponder()    
+        resetButton(resetBut)
     }
     
     //MARK: -
