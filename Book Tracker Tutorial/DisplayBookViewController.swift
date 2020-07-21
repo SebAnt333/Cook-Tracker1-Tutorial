@@ -19,19 +19,20 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         bookTableView.delegate = self
         bookTableView.dataSource = self
-        loadRecords()
+        loadRecords(status: "Currently Reading")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadRecords()
+        loadRecords(status: "Currently Reading")
         bookTableView.reloadData()
     }
     
-    func loadRecords(){
+    func loadRecords(status: String){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let myContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = Book.fetchRequest() as NSFetchRequest<Book>
-        
+        let predicate = NSPredicate(format: "status == %@", status)
+        fetchRequest.predicate = predicate
         
         do {
             try books = myContext.fetch(fetchRequest)
@@ -41,7 +42,17 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
     }
    
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
+        var status:String = "Currently Reading"
+        switch sender.selectedSegmentIndex {
+        case 0:
+            status = "Currently Reading"
+        case 1:
+            status = "To Read"
+        default:
+            status = "Read"
+        }
+        loadRecords(status: status)
+        bookTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
