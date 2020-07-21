@@ -40,13 +40,22 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
    
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
      }
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookcell", for: indexPath)
-        cell.backgroundColor = UIColor.init(red: 50/255, green: 111/255, blue: 168/255, alpha: 0.5)
+        
+        if (indexPath.row % 2 == 0){
+            cell.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 204/255, alpha: 1)
+        }else{
+            cell.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 153/255, alpha: 1)
+        }
         
         cell.textLabel?.text = books[indexPath.row].bookname
         return cell

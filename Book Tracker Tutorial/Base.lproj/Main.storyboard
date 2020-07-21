@@ -177,12 +177,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ghZ-F3-lQ9">
+                                <rect key="frame" x="20" y="92" width="374" height="32"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="Reading"/>
+                                    <segment title="To Read"/>
+                                    <segment title="Read"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="CjU-Z0-yp0" eventType="valueChanged" id="msV-lJ-KhA"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ph4-yJ-e9e" firstAttribute="bottom" secondItem="WlU-Fe-cUf" secondAttribute="bottom" constant="27" id="5RI-aW-a0T"/>
                             <constraint firstItem="WlU-Fe-cUf" firstAttribute="leading" secondItem="Ewx-5L-Fgf" secondAttribute="leadingMargin" id="9YP-kD-1lE"/>
+                            <constraint firstItem="ghZ-F3-lQ9" firstAttribute="top" secondItem="Ph4-yJ-e9e" secondAttribute="top" constant="48" id="Lky-kD-QYA"/>
                             <constraint firstItem="WlU-Fe-cUf" firstAttribute="trailing" secondItem="Ewx-5L-Fgf" secondAttribute="trailingMargin" id="gIT-yc-yZp"/>
+                            <constraint firstItem="ghZ-F3-lQ9" firstAttribute="leading" secondItem="WlU-Fe-cUf" secondAttribute="leading" id="jj5-mH-2b1"/>
+                            <constraint firstItem="ghZ-F3-lQ9" firstAttribute="trailing" secondItem="WlU-Fe-cUf" secondAttribute="trailing" id="tHW-Bq-sNB"/>
                             <constraint firstItem="WlU-Fe-cUf" firstAttribute="top" secondItem="Ph4-yJ-e9e" secondAttribute="top" constant="110" id="zFP-aO-06y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ph4-yJ-e9e"/>
