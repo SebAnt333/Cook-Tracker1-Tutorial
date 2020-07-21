@@ -20,7 +20,11 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         bookTableView.delegate = self
         bookTableView.dataSource = self
         loadRecords()
-       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadRecords()
+        bookTableView.reloadData()
     }
     
     func loadRecords(){
@@ -42,6 +46,7 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookcell", for: indexPath)
+        cell.backgroundColor = UIColor.init(red: 50/255, green: 111/255, blue: 168/255, alpha: 0.5)
         
         cell.textLabel?.text = books[indexPath.row].bookname
         return cell

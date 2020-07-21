@@ -114,7 +114,8 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(error)
         }
          
-        resetButton(resetBut)
+        //resetButton(resetBut)
+        tabBarController?.selectedIndex = 0 //go to display book Tab
     }
     
     //MARK: -
@@ -185,15 +186,15 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell")
         cell?.textLabel?.text = genreArray[indexPath.row]
         return cell!
-        }
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(isGenre){
             genreTextField.text = genreArray[indexPath.row]
-        }
-        else{
+        }else{
             statusTextField.text = genreArray[indexPath.row]
         }
-        }
-    
+        
     }
+    
+}
