@@ -44,7 +44,9 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
                   x:statusTextField.frame.origin.x,
                   y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
                   width: statusTextField.frame.width,
-                  height: 300)    }
+                  height: 300)
+        resetButton(resetBut)
+    }
     
     @IBAction func resetButton(_ sender: UIBarButtonItem) {
         bookTextField.text = ""
@@ -107,6 +109,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         book.authorname = authorTextField.text
         book.status = statusTextField.text
         book.genre = genreTextField.text
+        book.bookid = UUID().uuidString
         
         do {
             try myContext.save()

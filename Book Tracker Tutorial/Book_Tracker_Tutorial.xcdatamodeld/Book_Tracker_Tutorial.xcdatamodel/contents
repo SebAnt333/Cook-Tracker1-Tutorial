@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
         <attribute name="authorname" optional="YES" attributeType="String"/>
+        <attribute name="bookid" optional="YES" attributeType="String"/>
         <attribute name="bookname" optional="YES" attributeType="String"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Book" positionX="-54" positionY="-9" width="128" height="118"/>
     </elements>
 </model>

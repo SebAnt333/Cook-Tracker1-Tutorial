@@ -76,6 +76,8 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         if (editingStyle == .delete){
             //print(books[indexPath.row].bookname!)
             deleteBook(bookLocation: indexPath.row)
+            books.remove(at: indexPath.row)
+            tableView.reloadData()
             }
     }
     
@@ -83,7 +85,7 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = Book.fetchRequest() as NSFetchRequest<Book>
-        let predicate = NSPredicate(format:  "bookname == %@", books[bookLocation].bookname!)
+        let predicate = NSPredicate(format:  "bookid == %@", books[bookLocation].bookid!)
         fetchRequest.predicate = predicate
         
         var booksToDelete = [Book]()
