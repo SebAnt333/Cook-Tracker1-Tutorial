@@ -72,4 +72,33 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
      }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete){
+            //print(books[indexPath.row].bookname!)
+            deleteBook(bookLocation: indexPath.row)
+            }
+    }
+    
+    func deleteBook( bookLocation: Int){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = Book.fetchRequest() as NSFetchRequest<Book>
+        let predicate = NSPredicate(format:  "bookname == %@", books[bookLocation].bookname!)
+        fetchRequest.predicate = predicate
+        
+        var booksToDelete = [Book]()
+        do {
+            booksToDelete = try context.fetch(fetchRequest)
+        }catch let error {
+            print(error)
+        }
+        for book in booksToDelete{
+            context.delete(book)
+            do{
+                try context.save()
+            } catch let error{
+                print(error)
+            }
+        }
+    }
 }
