@@ -88,7 +88,11 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.reloadData()
         })
         let updateAction = UIContextualAction(style: .normal, title: "Update", handler: { (action, view, success) in
-        print(self.books[indexPath.row].bookname!)
+        //print(self.books[indexPath.row].bookname!)
+            let navController = self.tabBarController?.viewControllers?[1] as! UINavigationController
+            let viewController = navController.viewControllers[0] as! AddBookViewController
+            viewController.test = "Success"
+            self.tabBarController?.selectedIndex = 1
     })
         
         updateAction.backgroundColor = .gray

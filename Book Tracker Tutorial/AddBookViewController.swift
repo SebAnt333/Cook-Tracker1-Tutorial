@@ -29,6 +29,8 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     var statusTempArray:[String] = []
     var isGenre:Bool = false
     
+    var test:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         genreTableView.delegate = self
@@ -40,6 +42,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("String value is \(test)")
           genreTableView.frame = CGRect.init(
                   x:statusTextField.frame.origin.x,
                   y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
