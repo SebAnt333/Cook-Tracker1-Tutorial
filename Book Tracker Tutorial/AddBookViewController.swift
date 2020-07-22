@@ -29,7 +29,13 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     var statusTempArray:[String] = []
     var isGenre:Bool = false
     
-    var test:String = ""
+    class BookClass:NSObject{
+        var bookname:String!
+        var authorname: String!
+        var genre:String!
+        var status:String!
+    }
+    var book:BookClass = BookClass() //instantiate class
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +48,10 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("String value is \(test)")
+        
+        if (book.bookname != nil){
+            bookTextField.text = book.bookname!
+        }
           genreTableView.frame = CGRect.init(
                   x:statusTextField.frame.origin.x,
                   y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,

@@ -91,7 +91,13 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         //print(self.books[indexPath.row].bookname!)
             let navController = self.tabBarController?.viewControllers?[1] as! UINavigationController
             let viewController = navController.viewControllers[0] as! AddBookViewController
-            viewController.test = "Success"
+            navController.navigationBar.topItem?.title = "Edit Book"
+            self.tabBarController?.tabBar.items?[1].title = "Edit Book"
+            
+            viewController.book.bookname = self.books[indexPath.row].bookname
+            viewController.book.authorname = self.books[indexPath.row].authorname
+            viewController.book.genre = self.books[indexPath.row].genre
+            viewController.book.status = self.books[indexPath.row].status
             self.tabBarController?.selectedIndex = 1
     })
         
