@@ -72,13 +72,28 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
      }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete){
             //print(books[indexPath.row].bookname!)
             deleteBook(bookLocation: indexPath.row)
             books.remove(at: indexPath.row)
             tableView.reloadData()
             }
+    }*/
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, success) in
+            self.deleteBook(bookLocation: indexPath.row)
+            self.books.remove(at: indexPath.row)
+            tableView.reloadData()
+        })
+        let updateAction = UIContextualAction(style: .normal, title: "Update", handler: { (action, view, success) in
+        print(self.books[indexPath.row].bookname!)
+    })
+        
+        updateAction.backgroundColor = .gray
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [updateAction,deleteAction])
     }
     
     func deleteBook( bookLocation: Int){
