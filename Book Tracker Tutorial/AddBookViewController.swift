@@ -30,6 +30,7 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     var isGenre:Bool = false
     
     class BookClass:NSObject{
+        var bookid: String!
         var bookname:String!
         var authorname: String!
         var genre:String!
@@ -37,12 +38,14 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     var book:BookClass = BookClass() //instantiate class
     
+    var updateFlag:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         genreTableView.delegate = self
         genreTableView.dataSource = self
         
-        statusTextField.isEnabled = false
+        //statusTextField.isEnabled = false
         genreTempArray = genreArray
         genreArray = statusArray
         }
@@ -51,13 +54,17 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (book.bookname != nil){
             bookTextField.text = book.bookname!
+            authorTextField.text = book.authorname!
+            genreTextField.text = book.genre
+            statusTextField.text = book.status
+        }else{
+             resetButton(resetBut)
         }
           genreTableView.frame = CGRect.init(
                   x:statusTextField.frame.origin.x,
                   y:statusTextField.frame.origin.y + statusTextField.frame.height + 1,
                   width: statusTextField.frame.width,
                   height: 300)
-        resetButton(resetBut)
     }
     
     @IBAction func resetButton(_ sender: UIBarButtonItem) {
@@ -105,7 +112,14 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
                 statusTextField.layer.borderWidth = 2
                 statusTextField.layer.borderColor = UIColor.red.cgColor
         }else{
-            saveBook()
+            switch updateFlag{
+            case true:
+                updateBook()
+            default:
+                saveBook()
+            }
+            
+            
         }
     }
     
@@ -131,6 +145,36 @@ class AddBookViewController: UIViewController, UITableViewDelegate, UITableViewD
          
         //resetButton(resetBut)
         tabBarController?.selectedIndex = 0 //go to display book Tab
+    }
+    
+    func updateBook(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = Book.fetchRequest() as NSFetchRequest<Book>
+        let predicate = NSPredicate(format: "bookid == %@", book.bookid)
+        fetchRequest.predicate = predicate
+        
+        var updBooks:[Book] = []
+        
+        do {
+                updBooks = try context.fetch(fetchRequest)
+            }catch{
+                print(error)
+            }
+        for book in updBooks{
+            let bookToUpdate = book as NSManagedObject
+            
+            bookToUpdate.setValue(bookTextField.text, forKey: "bookname")
+             bookToUpdate.setValue(authorTextField.text, forKey: "authorname")
+             bookToUpdate.setValue(genreTextField.text, forKey: "genre")
+             bookToUpdate.setValue(statusTextField.text, forKey: "status")
+        }
+        do {
+            try context.save()
+                  }catch{
+                      print(error)
+                  }
+        tabBarController?.selectedIndex = 0
     }
     
     //MARK: -

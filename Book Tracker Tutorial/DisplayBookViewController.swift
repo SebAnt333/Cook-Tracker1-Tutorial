@@ -98,6 +98,9 @@ class DisplayBookViewController: UIViewController, UITableViewDelegate, UITableV
             viewController.book.authorname = self.books[indexPath.row].authorname
             viewController.book.genre = self.books[indexPath.row].genre
             viewController.book.status = self.books[indexPath.row].status
+            viewController.book.bookid = self.books[indexPath.row].bookid
+            
+            viewController.updateFlag = true
             self.tabBarController?.selectedIndex = 1
     })
         
